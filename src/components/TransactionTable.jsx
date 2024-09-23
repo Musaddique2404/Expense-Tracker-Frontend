@@ -1,14 +1,37 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import EditTransactionForm from "./EditTransactionForm";
 import NoDataMessage from "./NoDataMessage";
+import { Edit, Trash } from 'lucide-react'; // Import the icons
 
 const formatTime = (time) => {
   const [hours, minutes] = time.split(":").map(Number);
   const formattedHours = hours % 12 || 12; // Convert to 12-hour format
   const period = hours < 12 ? "AM" : "PM"; // Determine AM/PM
   return `${formattedHours}:${minutes < 10 ? "0" : ""}${minutes} ${period}`;
+};
+
+const ActionButtons = ({ transaction, handleEdit, handleDelete }) => {
+  return (
+    <div className="flex flex-col sm:flex-row items-center">
+      <button
+        onClick={() => handleEdit(transaction)}
+        className="flex items-center text-blue-500 hover:bg-blue-100 transition duration-200 p-1 rounded-md mr-2 mb-1 sm:mb-0 text-xs"
+      >
+        <Edit className="mr-1 w-4 h-4" /> Edit
+      </button>
+      <button
+        onClick={() => handleDelete(transaction._id)}
+        className="flex items-center text-red-500 hover:bg-red-100 transition duration-200 p-1 rounded-md text-xs"
+      >
+        <Trash className="mr-1 w-4 h-4" /> Delete
+      </button>
+    </div>
+  );
 };
 
 const TransactionTable = ({ searchTerm, currentMonth }) => {
@@ -122,19 +145,12 @@ const TransactionTable = ({ searchTerm, currentMonth }) => {
                     <div className="text-sm sm:text-base text-[#323232]">
                       {transaction.category}
                     </div>
-                    <div className="text-sm sm:text-xs text-[#323232] flex flex-col sm:flex-row">
-                      <span
-                        onClick={() => handleEdit(transaction)}
-                        className="cursor-pointer text-blue-500 hover:underline mb-1 sm:mb-0 sm:mr-2"
-                      >
-                        Edit
-                      </span>
-                      <span
-                        onClick={() => handleDelete(transaction._id)}
-                        className="cursor-pointer text-red-500 hover:underline"
-                      >
-                        Delete
-                      </span>
+                    <div className="text-sm sm:text-xs text-[#323232]">
+                      <ActionButtons 
+                        transaction={transaction} 
+                        handleEdit={handleEdit} 
+                        handleDelete={handleDelete} 
+                      />
                     </div>
                   </div>
                 ))}
