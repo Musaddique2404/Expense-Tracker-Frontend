@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Home, DollarSign, PlusCircle } from 'lucide-react'; // Import the icons
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+  };
+
   return (
     <nav className="bg-[#323232] shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -20,8 +26,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="md:hidden">
-          <button className="text-[#faf0e6] focus:outline-none">
-            {/* Icon for mobile menu (hamburger icon) */}
+          <button onClick={toggleMenu} className="text-[#faf0e6] focus:outline-none">
             <svg
               className="w-6 h-6 text-[#faf0e6]"
               fill="none"
@@ -39,6 +44,20 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-[#323232] text-[#faf0e6] p-4">
+          <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
+            <Home className="mr-2 inline" /> Home
+          </a>
+          <a href="/TransactionTable" className="block py-2 hover:text-[#FA8072] transition duration-300">
+            <DollarSign className="mr-2 inline" /> Transactions
+          </a>
+          <a href="/AddTransactionButton" className="block py-2 hover:text-[#FA8072] transition duration-300">
+            <PlusCircle className="mr-2 inline" /> Add Transaction
+          </a>
+        </div>
+      )}
     </nav>
   );
 };
