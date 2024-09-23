@@ -31,7 +31,7 @@ const TransactionTable = ({ searchTerm, currentMonth }) => {
     };
 
     fetchTransactions();
-  }, [transactions]);
+  }, []);
 
   const filteredTransactions = transactions.filter(
     (transaction) =>
@@ -66,16 +66,14 @@ const TransactionTable = ({ searchTerm, currentMonth }) => {
       await axios.delete(
         `https://expense-tracker-backend-es67.onrender.com/api/transactions/${id}`
       );
-      setTransactions(
-        transactions.filter((transaction) => transaction._id !== id)
-      );
+      setTransactions(transactions.filter((transaction) => transaction._id !== id));
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <div className="p-4 bg-gray-100 dark:bg-gray-900">
+    <div className="p-4 bg-[#DDD0C8]">
       {error && <p className="text-red-500">{error}</p>}
       {isEditing && selectedTransaction && (
         <EditTransactionForm
@@ -89,11 +87,11 @@ const TransactionTable = ({ searchTerm, currentMonth }) => {
       ) : (
         dates.map((day) => (
           <div key={day} className="mb-6">
-            <div className="font-bold text-xl mb-2 text-gray-900 dark:text-gray-100">
+            <div className="font-bold text-xl mb-2 text-[#323232]">
               {day}
             </div>
-            <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700">
-              <div className="grid grid-cols-5 gap-4 p-4 border-b font-semibold text-gray-900 dark:text-gray-100">
+            <div className="bg-white shadow-md rounded-lg overflow-hidden border border-[#323232]">
+              <div className="grid grid-cols-5 gap-4 p-4 border-b font-semibold text-[#323232]">
                 <div className="text-xs sm:text-sm md:text-base">Time</div>
                 <div className="text-xs sm:text-sm md:text-base">Title</div>
                 <div className="text-xs sm:text-sm md:text-base">Amount</div>
@@ -110,21 +108,21 @@ const TransactionTable = ({ searchTerm, currentMonth }) => {
                 .map((transaction) => (
                   <div
                     key={transaction._id}
-                    className="grid grid-cols-5 gap-4 p-4 border-b border-gray-300 dark:border-gray-700"
+                    className="grid grid-cols-5 gap-4 p-4 border-b border-[#323232]"
                   >
-                    <div className="text-sm sm:text-base dark:text-gray-100">
+                    <div className="text-sm sm:text-base text-[#323232]">
                       {formatTime(transaction.time)}
                     </div>
-                    <div className="text-sm sm:text-base dark:text-gray-100">
+                    <div className="text-sm sm:text-base text-[#323232]">
                       {transaction.title}
                     </div>
-                    <div className="text-sm sm:text-base dark:text-gray-100">
+                    <div className="text-sm sm:text-base text-[#323232]">
                       ₹{transaction.amount}
                     </div>
-                    <div className="text-sm sm:text-base dark:text-gray-100">
+                    <div className="text-sm sm:text-base text-[#323232]">
                       {transaction.category}
                     </div>
-                    <div className="text-sm sm:text-xs dark:text-gray-100 flex flex-col sm:flex-row">
+                    <div className="text-sm sm:text-xs text-[#323232] flex flex-col sm:flex-row">
                       <span
                         onClick={() => handleEdit(transaction)}
                         className="cursor-pointer text-blue-500 hover:underline mb-1 sm:mb-0 sm:mr-2"

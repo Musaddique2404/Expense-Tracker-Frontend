@@ -2,10 +2,10 @@ import React from 'react';
 
 const Header = ({ currentMonth, onPreviousMonth, onNextMonth }) => {
   return (
-    <div className="flex justify-between items-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4">
+    <div className="flex justify-between items-center bg-[#DDD0C8] text-[#323232] p-4">
       <button 
         onClick={onPreviousMonth}
-        className="text-sm sm:text-base md:text-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-1 sm:p-2 rounded hover:bg-gray-300 dark:hover:bg-gray-700"
+        className="text-sm sm:text-base md:text-xl bg-white text-[#323232] p-1 sm:p-2 rounded hover:bg-[#D0C0B8] transition duration-200"
       >
         {"< Previous Month"}
       </button>
@@ -14,7 +14,7 @@ const Header = ({ currentMonth, onPreviousMonth, onNextMonth }) => {
       </div>
       <button 
         onClick={onNextMonth}
-        className="text-sm sm:text-base md:text-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-1 sm:p-2 rounded hover:bg-gray-300 dark:hover:bg-gray-700"
+        className="text-sm sm:text-base md:text-xl bg-white text-[#323232] p-1 sm:p-2 rounded hover:bg-[#D0C0B8] transition duration-200"
       >
         {"Next Month >"}
       </button>

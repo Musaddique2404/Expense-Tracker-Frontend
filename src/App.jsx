@@ -20,8 +20,8 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto ">
+    <div className="min-h-screen bg-[#DDD0C8] dark:bg-[#DDD0C8]">
+      <div className="container mx-auto">
         <Navbar />
         <Header 
           currentMonth={currentMonth} 
