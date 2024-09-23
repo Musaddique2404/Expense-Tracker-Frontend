@@ -50,10 +50,10 @@ const Navbar = () => {
           <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
             <Home className="mr-2 inline" /> Home
           </a>
-          <a href="/TransactionTable" className="block py-2 hover:text-[#FA8072] transition duration-300">
+          <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
             <DollarSign className="mr-2 inline" /> Transactions
           </a>
-          <a href="/AddTransactionButton" className="block py-2 hover:text-[#FA8072] transition duration-300">
+          <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
             <PlusCircle className="mr-2 inline" /> Add Transaction
           </a>
         </div>
