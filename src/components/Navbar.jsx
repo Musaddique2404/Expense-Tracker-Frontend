@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Home, DollarSign, PlusCircle } from 'lucide-react'; // Import the icons
+import { Home, DollarSign, PlusCircle } from 'lucide-react';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -17,12 +17,6 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-8 ml-auto">
           <a href="/" className="flex items-center text-[#faf0e6] hover:text-[#FA8072] transition duration-300">
             <Home className="mr-2 text-[#faf0e6]" /> Home
-          </a>
-          <a href="/TransactionTable" className="flex items-center text-[#faf0e6] hover:text-[#FA8072] transition duration-300">
-            <DollarSign className="mr-2 text-[#faf0e6]" /> Transactions
-          </a>
-          <a href="/AddTransactionButton" className="flex items-center text-[#faf0e6] hover:text-[#FA8072] transition duration-300">
-            <PlusCircle className="mr-2 text-[#faf0e6]" /> Add Transaction
           </a>
         </div>
         <div className="md:hidden">
@@ -44,17 +38,10 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-[#323232] text-[#faf0e6] p-4">
           <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
             <Home className="mr-2 inline" /> Home
-          </a>
-          <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
-            <DollarSign className="mr-2 inline" /> Transactions
-          </a>
-          <a href="/" className="block py-2 hover:text-[#FA8072] transition duration-300">
-            <PlusCircle className="mr-2 inline" /> Add Transaction
           </a>
         </div>
       )}
